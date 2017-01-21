@@ -11,25 +11,22 @@ namespace problema1
     {
         static void Main(string[] args)
         {
-            ArrayList notas = new ArrayList();
-            notas.Add(80);
-            notas.Add(95);
-            notas.Add(90);
-            notas.Add(70);
-            notas.Add(75);
+            Console.WriteLine("Introdusca una oracion para contar las palabras!");
+            String oracion = Console.ReadLine();
+            oracion.Trim();
+            int palabras = 0, index = 0;
 
-            int maxNota = 0;
-            int totalNotas = 0;
-
-            foreach (int nota in notas)
+            while (index < oracion.Length)
             {
-                if(nota > maxNota)
-                {
-                    maxNota = nota;
-                }
-                totalNotas += nota;
+                while (index < oracion.Length && !char.IsWhiteSpace(oracion[index]))
+                    index++;
+
+                palabras++;
+
+                while (index < oracion.Length && char.IsWhiteSpace(oracion[index]))
+                    index++;
             }
-            Console.WriteLine("La nota mayor es: {0} y la nota minima: {1}", maxNota, totalNotas/notas.Count);
+            Console.WriteLine("Tiene {0}", palabras);
             Console.ReadKey();
         }
     }
